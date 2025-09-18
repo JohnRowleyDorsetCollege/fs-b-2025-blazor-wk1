@@ -14,15 +14,31 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <button class="btn btn-primary" @onclick="ShowName">Show Name</button>
-
+<button class="btn btn-primary" @onclick="DecrementCount">Decrement</button>
 @code {
+
+
+   
+    [Parameter]
+    public int IncrementAmount { get; set; } = 5;
+
+    [Parameter]
+    public int DecrementAmount { get; set; } = 1;
+
     private int currentCount = 0;
 
     private string myName = "";
 
     private void IncrementCount()
     {
-        currentCount++;
+        currentCount += IncrementAmount;
+       
+    }
+
+
+    private void DecrementCount()
+    {
+        currentCount = Math.Max(0, currentCount - DecrementAmount);
     }
 
     private void ShowName()
