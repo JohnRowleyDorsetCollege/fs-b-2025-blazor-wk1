@@ -7,13 +7,26 @@
 
 <p role="status">Current count: @currentCount</p>
 
+@if (!String.IsNullOrEmpty(myName))
+{
+    <p>My name is @myName</p>
+}
+
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="ShowName">Show Name</button>
 
 @code {
     private int currentCount = 0;
 
+    private string myName = "";
+
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    private void ShowName()
+    {
+        myName = "John";
     }
 }
